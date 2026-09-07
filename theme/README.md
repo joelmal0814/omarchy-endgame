@@ -118,7 +118,7 @@ All changes are user-level, survive `omarchy update`, and were backed up to
 | `~/.config/omarchy/plugins/jim.brand/` | New bar widget replacing the `omarchy.menu` button; shows `[branding] bar` or the stock logo. Same clicks (left = menu, right = terminal) | The bar logo is code, not theme data | `omarchy plugin remove jim.brand`, then `omarchy bar put omarchy.menu --section left --index 0` |
 | `~/.config/omarchy/shell.json` | `omarchy.menu` → `jim.brand` in `bar.layout.left`; clone bookkeeping (`jim.workspaces`, `jim.lock`, `disabledPlugins`) written by the clone command | Bar layout lives here | Restore `backups-endgame/shell.json.pre-endgame` |
 | `~/.config/starship.toml` | Added `[custom.omarchy_theme_badge]` and `${custom.omarchy_theme_badge}` at the start of `format` | Theme-owned prompt badge; hidden when the active theme has no `prompt.txt` | Restore `backups-endgame/starship.toml.pre-endgame` |
-| `~/.config/omarchy/extensions/omarchy-menu.jsonc` | Added `"root": {"title":"YOUR MOVE"}` and `"apps": {"icon":"♞","title":"YOUR MOVE"}` | Launcher header is configurable here; it is global (shows on every theme) | Delete those two lines; `omarchy menu refresh` |
+| `~/.config/omarchy/extensions/omarchy-menu.jsonc` | Added `"root": {"title":"YOUR MOVE"}` and a full `"apps"` entry (icon `♞`, title `YOUR MOVE`, `provider: "apps"` restated because an override replaces the whole entry) | Launcher header is configurable here; it is global (shows on every theme) | Delete those two lines; `omarchy menu refresh` |
 
 Switching to any other theme keeps the plugins active but they fall back to
 stock visuals automatically (Omarchy logo, numbered workspaces, plain lock
