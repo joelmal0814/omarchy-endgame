@@ -1,0 +1,34 @@
+# Endgame identity strings. This section is not part of stock Omarchy; it is
+# read by the user plugins jim.brand, jim.workspaces and jim.lock (see
+# README.md). Themes without a [branding] section fall back to stock visuals.
+#
+# Keep every value ASCII: write chess pieces as \uXXXX escapes (the shell's
+# theme-switch IPC decodes shell.toml as Latin-1, which mangles raw UTF-8).
+# White pieces: king \u2654 queen \u2655 rook \u2656 bishop \u2657 knight \u2658 pawn \u2659
+# Black pieces: king \u265A queen \u265B rook \u265C bishop \u265D knight \u265E pawn \u265F
+#
+# Bar label shown where the Omarchy logo normally sits (left click = menu,
+# right click = terminal). Leave empty to show the stock logo.
+bar = "\u265E ENDGAME"
+bar-color = "#C5A86A"
+
+# Workspace glyphs, one per workspace id, space separated. Workspaces beyond
+# the list fall back to numbers. active-glyphs is optional; if omitted the
+# same glyph is used and only the colour changes.
+# 1 King = command/main, 2 Queen = web, 3 Rook = terminal, 4 Bishop = code,
+# 5 Knight = communication, 6 Pawn = misc.
+workspace-glyphs        = "\u2654 \u2655 \u2656 \u2657 \u2658 \u2659"
+workspace-active-glyphs = "\u265A \u265B \u265C \u265D \u265E \u265F"
+workspace-active-color  = "#A7C59A"
+
+# Lock screen. lock-background is a file name inside this theme's
+# backgrounds/ directory; leave empty to use the current desktop wallpaper.
+lock-background = "02-terminal-board.png"
+lock-blur       = 0.25
+lock-dim        = 0.45
+lock-icon       = "\u265E"
+lock-subtitle   = "YOUR MOVE"
+lock-brand      = "OMARCHY // ENDGAME"
+lock-status     = "POSITION LOCKED"
+lock-time-format = "HH:mm"
+lock-date-format = "dddd d MMMM"

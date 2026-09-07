@@ -1,0 +1,6 @@
+# Endgame popups and OSD (volume/brightness): dark card, thin green border.
+background       = "#0D100E"
+background-alpha = 1.0
+text             = "#D8D3BE"
+border           = "#829B7B"
+border-alpha     = 0.7

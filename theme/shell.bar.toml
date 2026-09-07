@@ -1,0 +1,8 @@
+# Endgame bar: deep void background, ivory text, gold for modules calling attention.
+background       = "#080A09"
+background-alpha = 1.0
+text             = "#D8D3BE"
+active           = "#C5A86A"
+scale-with-font  = true
+size-horizontal  = 26
+size-vertical    = 28

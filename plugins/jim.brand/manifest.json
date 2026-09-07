@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "jim.brand",
+  "name": "Theme brand",
+  "version": "1.0.0",
+  "author": "jim",
+  "description": "Menu button that shows a theme-provided label ([branding] bar in shell.toml) instead of the Omarchy logo. Left click opens the Omarchy menu, right click opens a terminal.",
+  "kinds": ["bar-widget"],
+  "entryPoints": { "barWidget": "BarWidget.qml" },
+  "barWidget": {
+    "displayName": "Theme brand",
+    "description": "Omarchy menu button with a theme-provided label",
+    "category": "Compositor",
+    "allowMultiple": false,
+    "defaultSection": "left"
+  }
+}

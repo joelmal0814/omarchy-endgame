@@ -1,0 +1,13 @@
+# Endgame menus (clipboard, emoji, theme pickers inherit these).
+background                = "#151A16"
+background-alpha          = 1.0
+text                      = "#D8D3BE"
+border                    = "#829B7B"
+border-alpha              = 0.7
+scrim                     = "#080A09"
+scrim-alpha               = 0.55
+selected-background       = "#202820"
+selected-background-alpha = 1.0
+selected-text             = "#A7C59A"
+selected-border           = "#829B7B"
+selected-border-alpha     = 0.35

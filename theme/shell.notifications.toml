@@ -1,0 +1,8 @@
+# Endgame notifications: terminal-message look. Critical urgency uses `red`
+# from colors.toml automatically; the countdown/accent bar is muted green.
+background       = "#0D100E"
+background-alpha = 1.0
+text             = "#D8D3BE"
+border           = "#829B7B"
+border-alpha     = 0.8
+countdown        = "#829B7B"

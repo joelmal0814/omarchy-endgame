@@ -1,0 +1,12 @@
+# Endgame lock screen input field (rendered by the jim.lock plugin, see README.md).
+background       = "#0D100E"
+background-alpha = 0.55
+text             = "#F0EAD2"
+placeholder      = "#777D72"
+text-error       = "#B85C5C"
+border           = "#829B7B"
+border-active    = "#A7C59A"
+border-error     = "#B85C5C"
+border-alpha     = 0.9
+selection        = "#829B7B"
+selection-alpha  = 0.45

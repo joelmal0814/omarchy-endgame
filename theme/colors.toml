@@ -1,0 +1,37 @@
+# Endgame — ancient chess strategy reconstructed inside a modern terminal.
+# Semantic palette consumed by Omarchy's template system (see README.md).
+mode = "dark"
+
+accent = "#829B7B"
+selection = "#202820"
+muted = "#777D72"
+
+background = "#0D100E"
+dark_background = "#080A09"
+darker_background = "#050605"
+lighter_background = "#151A16"
+
+foreground = "#D8D3BE"
+dark_foreground = "#777D72"
+light_foreground = "#B9B5A2"
+bright_foreground = "#F0EAD2"
+
+# Window borders: muted green fading into antique gold; inactive = selected surface.
+hyprland_active_border = "rgba(829b7bee) rgba(b5a06cee) 45deg"
+hyprland_inactive_border = "rgba(202820aa)"
+
+red = "#B85C5C"
+yellow = "#C5A86A"
+orange = "#B9895A"
+green = "#829B7B"
+cyan = "#9BB5A6"
+blue = "#71899A"
+magenta = "#9E8A9C"
+brown = "#7A6647"
+
+bright_red = "#CF7A7A"
+bright_yellow = "#D9BF84"
+bright_green = "#A7C59A"
+bright_cyan = "#B4CCC0"
+bright_blue = "#8FA7B8"
+bright_magenta = "#B8A4B6"
