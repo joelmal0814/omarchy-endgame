@@ -9,6 +9,9 @@ modern terminal. Built for Omarchy 4.0.2.
 - `plugins/` — three Omarchy shell plugins (`jim.lock`, `jim.workspaces`,
   `jim.brand`) that render the chess identity from the theme's `[branding]`
   section. Linked into `~/.config/omarchy/plugins/`.
+- `hooks/theme-menu` — Omarchy `theme-set` hook that applies a theme's
+  `menu.jsonc` to the launcher and removes it when another theme is set.
+  Linked into `~/.config/omarchy/hooks/theme-set.d/`.
 - `img/` — the original generated wallpaper sources, untouched.
 - `install.sh` — creates the symlinks on a fresh machine.
 

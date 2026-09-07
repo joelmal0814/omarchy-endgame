@@ -1,0 +1,52 @@
+#!/bin/bash
+# Omarchy theme-set hook: give themes control over the Omarchy menu.
+#
+# If the theme that was just applied ships a menu.jsonc (a JSONC object of
+# menu entries, same format as omarchy-menu.jsonc), its entries are written
+# into ~/.config/omarchy/extensions/omarchy-menu.jsonc between the marker
+# lines below. Themes without menu.jsonc get the block removed, so the menu
+# returns to stock. Nothing outside the markers is touched.
+set -euo pipefail
+
+extension="$HOME/.config/omarchy/extensions/omarchy-menu.jsonc"
+theme_menu="$HOME/.local/state/omarchy/current/theme/menu.jsonc"
+begin='  // >>> theme menu (managed by the theme-menu hook, do not edit by hand)'
+end='  // <<< theme menu'
+
+[[ -f $extension ]] || printf '{\n}\n' >"$extension"
+
+# Drop the closing brace, plus any existing managed block, into $body.
+body=$(awk -v begin="$begin" -v end="$end" '
+  $0 == begin { skipping = 1; next }
+  $0 == end && skipping { skipping = 0; next }
+  skipping { next }
+  { lines[n++] = $0 }
+  END {
+    last = n - 1
+    while (last >= 0 && lines[last] ~ /^[[:space:]]*$/) last--
+    if (last >= 0 && lines[last] ~ /^[[:space:]]*}[[:space:]]*$/) last--
+    for (i = 0; i <= last; i++) print lines[i]
+  }' "$extension")
+
+tmp=$(mktemp)
+{
+  printf '%s\n' "$body"
+  if [[ -f $theme_menu ]]; then
+    printf '\n%s\n' "$begin"
+    # The fragment is a JSONC object; keep its entries, drop the outer braces.
+    awk 'NR == 1 && $0 ~ /^[[:space:]]*\{[[:space:]]*$/ { next } { lines[n++] = $0 }
+         END { last = n - 1
+               while (last >= 0 && lines[last] ~ /^[[:space:]]*$/) last--
+               if (last >= 0 && lines[last] ~ /^[[:space:]]*}[[:space:]]*$/) last--
+               for (i = 0; i <= last; i++) print lines[i] }' "$theme_menu"
+    printf '%s\n' "$end"
+  fi
+  printf '}\n'
+} >"$tmp"
+
+if ! cmp -s "$tmp" "$extension"; then
+  mv "$tmp" "$extension"
+  omarchy menu refresh >/dev/null 2>&1 || true
+else
+  rm -f "$tmp"
+fi

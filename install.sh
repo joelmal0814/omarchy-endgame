@@ -22,6 +22,7 @@ for plugin in "$repo"/plugins/*/; do
   plugin=${plugin%/}
   link "$plugin" "$HOME/.config/omarchy/plugins/$(basename "$plugin")"
 done
+link "$repo/hooks/theme-menu" "$HOME/.config/omarchy/hooks/theme-set.d/theme-menu"
 
 if omarchy-shell shell ping >/dev/null 2>&1; then
   omarchy-shell shell rescanPlugins >/dev/null || true
@@ -30,6 +31,6 @@ fi
 cat <<MSG
 Done. Remaining manual steps (see theme/README.md, "Files outside this directory"):
   omarchy plugin enable jim.lock jim.workspaces jim.brand   # and put jim.brand/jim.workspaces in the bar
-  starship.toml badge module, omarchy-menu.jsonc launcher title
+  starship.toml badge module
   omarchy theme set endgame
 MSG

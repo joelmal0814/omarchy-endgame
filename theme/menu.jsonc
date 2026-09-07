@@ -1,0 +1,9 @@
+{
+  // Endgame launcher/menu overrides. Injected into
+  // ~/.config/omarchy/extensions/omarchy-menu.jsonc by the theme-menu hook
+  // while this theme is active, and removed again on switching away.
+  // An override replaces the whole entry (unset fields become empty), so
+  // "apps" restates everything from the stock definition.
+  "root": {"title":"YOUR MOVE"},
+  "apps": {"icon":"♞","label":"Apps","title":"YOUR MOVE","aliases":["app","applications"],"provider":"apps"},
+}
