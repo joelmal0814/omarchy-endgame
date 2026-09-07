@@ -90,7 +90,9 @@ Preview without locking: `omarchy-shell lock preview` (click to dismiss, or
 
 ## Terminal prompt identity
 
-The prompt shows `♞ ~/project ❯`. The badge text is the content of
+The prompt shows `♞ ~/project ❯`. Starship redraws the prompt each time you
+press Enter, so after a theme switch the badge changes on the next prompt line;
+lines already on screen stay as they were. The badge text is the content of
 `prompt.txt` in this directory — change it to anything (e.g. `♞ endgame`) and
 re-run `omarchy theme set endgame`. The username is not hard-coded anywhere;
 if you want it shown, add `$username` to `format` in `~/.config/starship.toml`
@@ -109,8 +111,9 @@ raw UTF-8; the plugins decode the escapes).
 
 ## Files outside this directory
 
-All changes are user-level, survive `omarchy update`, and were backed up to
-`~/.config/omarchy/backups-endgame/` before editing.
+All changes are user-level and survive `omarchy update`. `install.sh` in the
+repo root makes them; `uninstall.sh` reverses them exactly (the original
+machine additionally has pre-edit copies in `~/.config/omarchy/backups-endgame/`).
 
 | Path | Change | Why | Revert |
 |---|---|---|---|
@@ -118,7 +121,7 @@ All changes are user-level, survive `omarchy update`, and were backed up to
 | `~/.config/omarchy/plugins/jim.workspaces/` | Clone of `omarchy.workspaces`; renders `[branding]` glyphs, stock numbers otherwise | Workspace labels are code, not theme data | `omarchy plugin remove jim.workspaces` |
 | `~/.config/omarchy/plugins/jim.brand/` | New bar widget replacing the `omarchy.menu` button; shows `[branding] bar` or the stock logo. Same clicks (left = menu, right = terminal) | The bar logo is code, not theme data | `omarchy plugin remove jim.brand`, then `omarchy bar put omarchy.menu --section left --index 0` |
 | `~/.config/omarchy/shell.json` | `omarchy.menu` → `jim.brand` in `bar.layout.left`; clone bookkeeping (`jim.workspaces`, `jim.lock`, `disabledPlugins`) written by the clone command | Bar layout lives here | Restore `backups-endgame/shell.json.pre-endgame` |
-| `~/.config/starship.toml` | Added `[custom.omarchy_theme_badge]` and `${custom.omarchy_theme_badge}` at the start of `format` | Theme-owned prompt badge; hidden when the active theme has no `prompt.txt` | Restore `backups-endgame/starship.toml.pre-endgame` |
+| `~/.config/starship.toml` | Added `[custom.omarchy_theme_badge]` between `# >>> / # <<< omarchy-endgame prompt badge` markers and `${custom.omarchy_theme_badge}` at the start of `format` | Theme-owned prompt badge; hidden when the active theme has no `prompt.txt` | `uninstall.sh`, or delete the marked block and the token |
 | `~/.config/omarchy/hooks/theme-set.d/theme-menu` | Symlink to `hooks/theme-menu` in the repo. On every theme switch it writes the active theme's `menu.jsonc` (this theme: launcher header `YOUR MOVE`, knight icon on Apps) into the extension file below between marker comments, or removes the block for themes without one | The menu extension file is global; the hook makes its Endgame part follow the theme | Remove the symlink; delete the marked block from the extension file; `omarchy menu refresh` |
 | `~/.config/omarchy/extensions/omarchy-menu.jsonc` | Contains a hook-managed block between `// >>> theme menu` and `// <<< theme menu` while Endgame is active | Written by the hook above | Handled by the hook; or delete the block by hand |
 
